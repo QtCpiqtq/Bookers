@@ -1,6 +1,6 @@
 <h1>Books</h1>
-<%= @books.each do |list| %>
-<p>Title</p>
-<span><%= list.title %></span>
-<p>Body</p>
-<span><%= list.body %></span>
+<p>Title: <%= @book.title %></p>
+<p>Body: <%= @book.body %></p>
+
+<%= link_to 'edit', '/books/edit' %>
+<%= link_to 'back', '/books/index' %>
