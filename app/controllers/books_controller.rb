@@ -6,7 +6,8 @@ class BooksController < ApplicationController
   def create
       @book = Book.new(book_params)
       if @book.save
-      redirect_to '/books/new'
+      flash[:notice] = "Book was saccessfully created"
+      redirect_to bookshow_path(@book.id)
       else
       render :new
       end
@@ -27,7 +28,8 @@ class BooksController < ApplicationController
   def update
       @book = Book.find(params[:id])
       if  @book.update(book_params)
-      redirect_to '/books/index'
+      flash[:notice] = "Book was saccessfully updated"
+      redirect_to bookshow_path(@book.id)
       else
       render :edit
       end
@@ -36,6 +38,7 @@ class BooksController < ApplicationController
   def destroy
       book = Book.find(params[:id])
       book.destroy
+      redirect_to '/books/index'
   end
   
   private 
